@@ -1,4 +1,18 @@
 %!TEX encoding = UTF-8 Unicode
+%
+% ACCESSIBLE PDF SETUP (read this first)
+%   1. In Overleaf: Menu > Compiler = LuaLaTeX
+%   2. In Overleaf: Menu > TeX Live version = 2025 or later (2026 preferred)
+%   3. \DocumentMetadata must stay the very first command, before \documentclass.
+%   4. Fix every LaTeX error: a PDF compiled with errors loses its tags.
+%
+\DocumentMetadata{
+  tagging=on,                              % write PDF tags (document structure)
+  tagging-setup={math/setup=mathml-SE},    % structured math (needs LuaLaTeX)
+  pdfstandard=ua-1,                        % PDF/UA-1 (PDF 1.7): what most checkers validate; ua-2 = PDF 2.0
+  lang=en-US                               % document language for screen readers
+}
+
 % LaTeX Template for CV/Resume
 %
 % This template has been downloaded and modified from:
@@ -19,7 +33,16 @@
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[11pt, letterpaper, draft]{academic-cv}
+% (`draft' was removed: it prints black overfull-box marks in the margins.
+%  Use `draft' only while debugging layout.)
+\documentclass[11pt, letterpaper, final]{academic-cv}
+
+% PDF metadata: the title is shown by PDF readers and read first by screen readers
+\hypersetup{
+  pdftitle={Lily Koffman -- Curriculum Vitae},
+  pdfauthor={Lily Koffman},
+  pdfsubject={Curriculum Vitae}
+}
 
 % Configure page margins with geometry
 \geometry{left=0.75in, top=0.75in, right=0.75in, bottom=0.75in, footskip=.5cm}
